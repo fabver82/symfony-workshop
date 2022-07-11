@@ -17,3 +17,9 @@ Now that you have installed all depedencies, let's check if you are ready to sta
 ```
 symfony check:requirements
 ```
+
+You should read a message with a green background saying : 'Your system is ready to run Symfony projects"
+
+Congratulations !!!
+
+If you need more informations about the installation, here is a link to the documentation : [https://symfony.com/doc/current/setup.html](https://symfony.com/doc/current/setup.html)
