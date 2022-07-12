@@ -127,7 +127,7 @@ nav {
 }
 
 .movements__row {
-  padding: 2.25rem 4rem;
+  padding: 2rem 2rem;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #eee;
@@ -140,11 +140,11 @@ nav {
   color: #fff;
   padding: 0.1rem 1rem;
   border-radius: 10rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .movements__date {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   font-weight: 500;
   color: #666;
@@ -159,11 +159,11 @@ nav {
 }
 
 .movements__value{
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   margin-left: auto;
 }
 .movements__subject {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   margin-left: auto;
 }
