@@ -100,11 +100,12 @@ More about it [here](https://symfony.com/doc/current/templates.html)
 - test it !
 
 We are loading home/index.html.twig which extend the base.html.twig that we just edit.
-if we want to add specific data for this page, we need to add "blocks" in the base file, that wil be overwritten in the template. You can also use partials for header, footer, or anything else.
+If we want to add specific data for this page, we need to add "blocks" in the base file, that wil be overwritten in the template that we load for this controller. You can also use partials for header, footer, or anything else.
 
 ## Login system
 
-We have now a login form to handle, so let's create our user model. No, we don't need to start coding yet ! We are lazy and we will let symfony do it for us.
+We have now a login form to handle, so let's create our user model and make that thing work.
+No, we don't need to start coding yet ! We are lazy and we will let symfony do it for us.
 
 checkout the doc about it and follow the steps : [https://symfony.com/doc/current/security.html#the-user](https://symfony.com/doc/current/security.html#the-user)
 
@@ -128,3 +129,7 @@ composer require --dev orm-fixtures
 ```
 php bin/console doctrine:fixtures:load
 ```
+
+- Enable form_login into security.yaml
+- Edit the HomeController and View as explained [here](https://symfony.com/doc/current/security.html#form-login)
+- test it and check if you are log in with debug bar.
