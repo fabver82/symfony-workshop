@@ -26,10 +26,6 @@ Congratulations !!!
 
 We will create a wallet manager. This app will show all the operations that the user has done. He will be able to check his balance, add incomes, and add expenses.
 
-## Starter Kit
-
-There is a template for our project in the template folder. Feel free to use it.
-
 ## Let's get started !
 
 The first thing to do is to create a symfony project that will contain all the base files. Symfony is a set of packages. Basically, you take the packages that you need but here we will install the most common packages needed for a webapp.
@@ -73,6 +69,62 @@ IMPORTANT: modify the port to '3306:3306'. If you don't do it, the port will be 
 
 Symfony need to know how to connect to your database. You need to modify it into the .env file :
 
-- comment the postgresql line
+- comment the postgresql line if it still here
 - uncomment the one for mysql.
-- Edit it with the db name and password.
+- Edit it with the db name and password to you setup.
+- run docker compose
+
+## Our home page
+
+### the controller
+
+Let's create our first page. We need a controller and a view...and we are very lazy!
+
+- create a controller by using the maker bundle :
+
+```
+php bin/console make:controller HomeController
+```
+
+What just happens ? Symfony create a controller and a view ! Check it out !
+Our route is defined right above the index function. Edit it so our homepage link to the root of our website and test it.
+Amazing ! Our controller and our view is already working.
+Now implement the template that I ve share with you in this repository.
+
+### the view
+
+Symfony use Twig as a template engine ( But I guess you could use other template engine like Pug or Blade).
+More about it [here](https://symfony.com/doc/current/templates.html)
+
+- Copy the content of our index.html into templates/base.html.twig file and copy all the other file (css and images) into the public folder.
+- test it !
+
+We are loading home/index.html.twig which extend the base.html.twig that we just edit.
+if we want to add specific data for this page, we need to add "blocks" in the base file, that wil be overwritten in the template. You can also use partials for header, footer, or anything else.
+
+## Login system
+
+We have now a login form to handle, so let's create our user model. No, we don't need to start coding yet ! We are lazy and we will let symfony do it for us.
+
+checkout the doc about it and follow the steps : [https://symfony.com/doc/current/security.html#the-user](https://symfony.com/doc/current/security.html#the-user)
+
+- create user entity via CLI (I will choose username instead of email for login)
+- make migration and migrate to database
+
+At this point, you just create a new table in your DB, but we don't have any user yet.
+Let's create one by using fixtures.
+[https://symfony.com/bundles/DoctrineFixturesBundle/current/index.html](https://symfony.com/bundles/DoctrineFixturesBundle/current/index.html)
+
+You will need to install the fixtures bundle. type:
+
+```
+composer require --dev orm-fixtures
+```
+
+- Create a user in src/DataFixtures/AppFixtures
+- Remember to hash your password. checkout this [link](https://symfony.com/doc/current/security/passwords.html)
+- then finally load the fixtures bundle
+
+```
+php bin/console doctrine:fixtures:load
+```
