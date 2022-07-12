@@ -133,3 +133,5 @@ php bin/console doctrine:fixtures:load
 - Enable form_login into security.yaml
 - Edit the HomeController and View as explained [here](https://symfony.com/doc/current/security.html#form-login)
 - test it and check if you are log in with debug bar.
+
+Awesome ! We almost didn't write a line of code and we already have a home page and login system ! Well done !
