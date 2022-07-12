@@ -56,3 +56,23 @@ symfony server:stop
 ```
 
 check out the documentation if you need more informations: [https://symfony.com/doc/current/setup.html](https://symfony.com/doc/current/setup.html)
+
+## setup our environnement
+
+Right, we have a local server but we don't have a database. Let's symfony take care of that, type:
+
+```
+symfony console make:docker:database
+```
+
+- choose MySql (0) and defaults value.
+
+You have just setup your docker-compose file for MySql.
+
+IMPORTANT: modify the port to '3306:3306'. If you don't do it, the port will be random everytime you run docker.
+
+Symfony need to know how to connect to your database. You need to modify it into the .env file :
+
+- comment the postgresql line
+- uncomment the one for mysql.
+- Edit it with the db name and password.
