@@ -150,16 +150,21 @@ nav {
   color: #666;
 }
 
-.movements__type--deposit {
+.movements__type--in {
   background-image: linear-gradient(to top left, #39b385, #9be15d);
 }
 
-.movements__type--withdrawal {
+.movements__type--out {
   background-image: linear-gradient(to top left, #e52a5a, #ff585f);
 }
 
-.movements__value {
+.movements__value{
   font-size: 1.7rem;
+  margin-left: auto;
+}
+.movements__subject {
+  font-size: 1.5rem;
+  font-weight: 500;
   margin-left: auto;
 }
 
@@ -213,11 +218,11 @@ nav {
   background-image: linear-gradient(to top left, #ffb003, #ffcb03);
 }
 
-.operation--loan {
+.operation--income {
   background-image: linear-gradient(to top left, #39b385, #9be15d);
 }
 
-.operation--close {
+.operation--expense {
   background-image: linear-gradient(to top left, #e52a5a, #ff585f);
 }
 
@@ -236,10 +241,10 @@ h2 {
 }
 
 /* Exceptions for interst */
-.form.form--loan {
+/* .form.form--movement {
   grid-template-columns: 2.5fr 1fr 2.5fr;
-}
-.form__label--loan {
+} */
+.form__label--movement {
   grid-row: 2;
 }
 /* End exceptions */
