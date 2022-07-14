@@ -158,3 +158,55 @@ Of course ! We need to tell symfony what to show/ not show when a user is logged
 Modify the twig files so that the login form disapear when user is logged in, and that the content doesn't shows up if nobody is logged.
 
 - TIPS : look for "is_granted" and "path" method in Twig
+
+## Handle the operations
+
+### create operation entity
+
+We will need a table that hold all operations made by the user. So the first step is to create an entity like we did for the user. But this time we will need to create a relation between this table and the user. Use the maker bundle that same way we did with the user.
+
+```
+php bin/console make:entity Operation
+```
+
+when adding the user into the operation table, choose "relation" as type field. It will ask you what type of relation and you could guess the right one. It will also automaticaly create a method that will help you retrieve all operations from the user entity. Amazing isn'it ?
+And Remember to create migrations !!!
+
+Now we need to make our forms work so the user can add his operations.
+
+### create forms
+
+Let's have a look at how forms can be build and handle in symfony : [https://symfony.com/doc/current/forms.html](https://symfony.com/doc/current/forms.html)
+
+There are many ways. But the most efficient would be to have a dedicated form type. Are you lazy ? I guess! So let's use the maker bundle again!
+
+```
+php bin/console make:form OperationType
+```
+
+and checkout the newly created file.
+
+### render the form
+
+First we need to tell our controller that we want to render a form. Since our form need some basic data before being submitted we will add them directly in the controller ( User, date and 'in' or 'out' for income or expense form).
+
+we will use the createForm method and we will pass it the view :
+
+```
+$incomeForm = $this->createForm(OperationType::class, $operation)->createView();
+```
+
+Remember to import entity and formtype into your controller.
+
+Then we will simply use the form method in twig to render it
+
+```
+{{ form(incomeForm) }}
+
+```
+
+But now, our frontender is angry at us...
+Check out how we can customize the form rendering [here](https://symfony.com/doc/current/form/form_customization.html)
+easy isn't it ?
+
+### Handle the form
