@@ -55,7 +55,7 @@ check out the documentation if you need more informations: [https://symfony.com/
 
 ## setup our environnement
 
-Right, we have a local server but we don't have a database. Let's symfony take care of that, type:
+Right, we have a local server but we don't have a database. Let symfony take care of that, type:
 
 ```
 symfony console make:docker:database
@@ -65,14 +65,14 @@ symfony console make:docker:database
 
 You have just setup your docker-compose file for MySql.
 
-IMPORTANT: modify the port to '3306:3306'. If you don't do it, the port will be random everytime you run docker.
+IMPORTANT: modify the port to '3306:3306'. If you don't do it, the port will be random everytime you run docker and you will need to edit the .env file often.
 
 Symfony need to know how to connect to your database. You need to modify it into the .env file :
 
 - comment the postgresql line if it still here
 - uncomment the one for mysql.
 - Edit it with the db name and password to you setup.
-- run docker compose
+- run docker compose up -d
 
 ## Our home page
 
@@ -87,9 +87,12 @@ php bin/console make:controller HomeController
 ```
 
 What just happens ? Symfony create a controller and a view ! Check it out !
-Our route is defined right above the index function. Edit it so our homepage link to the root of our website and test it.
+Our route is defined right above the index function, yes as a comment! That is working because we already have the "annotations" bundle implemented by default when we create the project for a webapp.
+Edit the controller so our homepage link to the root of our website and test it...
+
 Amazing ! Our controller and our view is already working.
-Now implement the template that I ve share with you in this repository.
+
+Now let's implement the template that I ve share with you in this repository.
 
 ### the view
 
@@ -101,37 +104,57 @@ More about it [here](https://symfony.com/doc/current/templates.html)
 
 We are loading home/index.html.twig which extend the base.html.twig that we just edit.
 If we want to add specific data for this page, we need to add "blocks" in the base file, that wil be overwritten in the template that we load for this controller. You can also use partials for header, footer, or anything else.
+if we want to add a link to a specific route, we only need to use "path" with the route name in our twig file. Example :
+
+```
+{{ path('app_home')}}
+```
+
+We will come back later in our twig file for more configurations.
 
 ## Login system
 
 We have now a login form to handle, so let's create our user model and make that thing work.
 No, we don't need to start coding yet ! We are lazy and we will let symfony do it for us.
 
-checkout the doc about it and follow the steps : [https://symfony.com/doc/current/security.html#the-user](https://symfony.com/doc/current/security.html#the-user)
+Checkout the doc about it and follow the steps : [https://symfony.com/doc/current/security.html#the-user](https://symfony.com/doc/current/security.html#the-user)
 
 - create user entity via CLI (I will choose username instead of email for login)
 - make migration and migrate to database
 
-At this point, you just create a new table in your DB, but we don't have any user yet.
-Let's create one by using fixtures.
+At this point, you just create a new table in your DB and a model (check it out in src/entity and src/repository), but we don't have any user yet.
+Let's create one by using fixtures : a bundle that will help us create "fake data" in our DB.(without having to do it manually via phpmyadmin )
 [https://symfony.com/bundles/DoctrineFixturesBundle/current/index.html](https://symfony.com/bundles/DoctrineFixturesBundle/current/index.html)
 
-You will need to install the fixtures bundle. type:
+Intall it by typing :
 
 ```
 composer require --dev orm-fixtures
 ```
 
+Then, follow the doc :
+
 - Create a user in src/DataFixtures/AppFixtures
 - Remember to hash your password. checkout this [link](https://symfony.com/doc/current/security/passwords.html)
-- then finally load the fixtures bundle
+- then finally load the datas via the fixtures bundle
 
 ```
 php bin/console doctrine:fixtures:load
 ```
 
-- Enable form_login into security.yaml
-- Edit the HomeController and View as explained [here](https://symfony.com/doc/current/security.html#form-login)
+Now we have a user in our database. Let's setup the login form:
+
+- Enable form_login into security.yaml as explained [here](https://symfony.com/doc/current/security.html#form-login)
+- Edit the HomeController and View
 - test it and check if you are log in with debug bar.
 
-Awesome ! We almost didn't write a line of code and we already have a home page and login system ! Well done !
+Awesome ! We almost didn't write a line of code and we already have a home page and a login system ! Well done !
+
+BONUS : add the logout function !
+
+"But hey ? nothing else is happening ? "
+Of course ! We need to tell symfony what to show/ not show when a user is logged.
+
+Modify the twig files so that the login form disapear when user is logged in, and that the content doesn't shows up if nobody is logged.
+
+- TIPS : look for "is_granted" and "path" method in Twig
