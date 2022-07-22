@@ -33,5 +33,3 @@ if we want to add a link to a specific route, we only need to use "path" with th
 ```
 {{ path('app_home')}}
 ```
-
-We will come back later in our twig file for more configurations.

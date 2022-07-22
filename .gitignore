@@ -1,1 +1,3 @@
 /wallet
+/wallet-manager/var/*
+/wallet-manager/vendor/*
