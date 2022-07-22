@@ -27,6 +27,7 @@ class __TwigTemplate_a7c678640d1e19672b9469dbfe8c632c extends Template
         $this->parent = false;
 
         $this->blocks = [
+            'body' => [$this, 'block_body'],
         ];
     }
 
@@ -77,8 +78,34 @@ class __TwigTemplate_a7c678640d1e19672b9469dbfe8c632c extends Template
         <button class=\"login__btn\">&rarr;</button>
       </form>
     </nav>
+";
+        // line 38
+        $this->displayBlock('body', $context, $blocks);
+        // line 108
+        echo "  </body>
+</html>
 
-    <main class=\"app\">
+";
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 38
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 39
+        echo "    <main class=\"app\">
       <!-- BALANCE -->
       <div class=\"balance\">
         <div>
@@ -146,16 +173,12 @@ class __TwigTemplate_a7c678640d1e19672b9469dbfe8c632c extends Template
         You will be logged out in <span class=\"timer\">05:00</span>
       </p>
     </main>
-
-  </body>
-</html>
-
 ";
         
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
         
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
     }
 
@@ -166,7 +189,7 @@ class __TwigTemplate_a7c678640d1e19672b9469dbfe8c632c extends Template
 
     public function getDebugInfo()
     {
-        return array (  43 => 1,);
+        return array (  108 => 39,  98 => 38,  85 => 108,  83 => 38,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -208,7 +231,7 @@ class __TwigTemplate_a7c678640d1e19672b9469dbfe8c632c extends Template
         <button class=\"login__btn\">&rarr;</button>
       </form>
     </nav>
-
+{% block body %}
     <main class=\"app\">
       <!-- BALANCE -->
       <div class=\"balance\">
@@ -277,7 +300,7 @@ class __TwigTemplate_a7c678640d1e19672b9469dbfe8c632c extends Template
         You will be logged out in <span class=\"timer\">05:00</span>
       </p>
     </main>
-
+{% endblock %}
   </body>
 </html>
 
